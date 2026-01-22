@@ -1,0 +1,858 @@
+/* Основные переменные (светлая тема) */
+:root {
+    --bg: #f8f9fa;
+    --text: #343a40;
+    --card-bg: #ffffff;
+    --header-bg: #007bff;
+    --link-color: #007bff;
+    --border: #dee2e6;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --hover-bg: #e9ecef;
+    --btn-hover: #0056b3;
+    --accent: #28a745;
+}
+
+/* Тёмная тема (переопределяем переменные) */
+[data-theme="dark"] {
+    --bg: #1a1a1a;
+    --text: #e0e0e0;
+    --card-bg: #2d2d2d;
+    --header-bg: #1e3a8a;
+    --link-color: #4fc3f7;
+    --border: #444444;
+    --shadow: rgba(0, 0, 0, 0.3);
+    --hover-bg: #333333;
+    --btn-hover: #1976d2;
+    --accent: #4caf50;
+}
+
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    min-height: 100vh;
+}
+
+/* Шапка */
+header {
+    background-color: var(--header-bg);
+    color: white;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Кнопка переключения темы */
+#theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.3s, opacity 0.3s;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#theme-toggle:hover {
+    transform: rotate(30deg);
+    opacity: 0.8;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Навигация */
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 1rem 0;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 10px var(--shadow);
+    border-radius: 12px;
+    margin: 1rem auto;
+    max-width: 800px;
+    overflow: hidden;
+}
+
+nav ul li {
+    margin: 0 1.2rem;
+}
+
+nav ul li a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: var(--hover-bg);
+    color: var(--btn-hover);
+    transform: translateY(-1px);
+}
+
+/* Основной контент */
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 20px var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px var(--shadow);
+}
+
+/* Заголовки */
+h1, h2, h3, h4 {
+    color: var(--header-bg);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.2rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+/* Текст */
+p, li {
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+/* Кнопки */
+button, .btn {
+    background-color: var(--header-bg);
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    display: inline-block;
+}
+
+button:hover, .btn:hover {
+    background-color: var(--btn-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+button:active, .btn:active {
+    transform: scale(0.98);
+}
+
+/* Формы и ввод */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    color: var(--text);
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 1rem;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.3);
+}
+
+/* Ссылки */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--btn-hover);
+    text-decoration: underline;
+}
+
+/* Подвал */
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: var(--card-bg);
+    color: var(--text);
+    margin-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+        text-align: left;
+    }
+
+    #theme-toggle {
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    nav ul li {
+        margin: 0.7rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        width: 100%;
+        text-align: center;
+        padding: 0.7rem 1rem;
+    }
+
+    main {
+        padding: 1.5rem;
+    }
+
+    section {
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+}
+header h1 {
+    color: white; /* Белый цвет текста */
+    font-size: 2.2rem;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+header p {
+    color: rgba(255, 255, 255, 0.85); /* Светло-серый для подзаголовка */
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0 0;
+}
+/* Боковая панель пользователя */
+#user-panel {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--card-bg);
+    border-right: 1px solid var(--border);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    transition: transform 0.4s ease;
+}
+
+/* Свёрнутое состояние */
+#user-panel.collapsed {
+    transform: translateX(-100%);
+}
+
+/* Шапка профиля */
+.user-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    background: var(--header-bg);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 1rem auto;
+}
+
+.user-header h3 {
+    margin: 0 0 0.3rem 0;
+    color: var(--text);
+}
+
+.status {
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Меню навигации */
+.user-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.user-nav li {
+    margin: 0.7rem 0;
+}
+
+.user-nav a {
+    display: flex;
+    align-items: center;
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+    gap: 12px;
+}
+
+.user-nav a:hover {
+    background-color: var(--hover-bg);
+    color: var(--link-color);
+}
+
+.user-nav span {
+    font-size: 1.2rem;
+}
+
+/* Статистика */
+.user-stats {
+    margin-top: auto;
+    padding: 1rem 0;
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.user-stats p {
+    margin: 0.6rem 0;
+}
+
+/* Кнопка сворачивания (добавим позже через JS) */
+.toggle-panel-btn {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transform: translateY(-50%);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    #user-panel {
+        transform: translateX(-100%);
+        box-shadow: none;
+        border-right: none;
+    }
+
+    #user-panel.visible {
+        transform: translateX(0);
+    }
+}
+/* Кнопка аккаунта */
+#account-btn {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+#account-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Выпадающее меню */
+.dropdown-menu {
+    position: absolute;
+    right: 2rem;
+    top: calc(100% + 1rem);
+    width: 280px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Информация о пользователе */
+.user-info {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    background: var(--header-bg);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 0.8rem auto;
+}
+
+.user-info h4 {
+    margin: 0 0 0.4rem 0;
+    color: var(--text);
+}
+
+.status {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Пункты меню */
+.menu-items {
+    list-style: none;
+    padding: 0.5rem 0;
+}
+
+.menu-items li {
+    border-top: 1px solid var(--border);
+}
+
+.menu-items a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.9rem 1.2rem;
+    transition: all 0.3s;
+    font-size: 1rem;
+}
+
+.menu-items a:hover {
+    background-color: var(--hover-bg);
+    color: var(--link-color);
+    padding-left: 1.5rem;
+}
+
+.menu-items span:first-child {
+    font-size: 1.3rem;
+}
+
+/* Статистика внизу меню */
+.stats {
+    padding: 1rem 1.2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.stats p {
+    margin: 0.6rem 0;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        right: 1rem;
+        width: 260px;
+        top: calc(100% + 0.7rem);
+    }
+
+    #account-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+/* Боковая панель */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 280px;
+    background: var(--card-bg);
+    border-left: 1px solid var(--border);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    overflow-y: auto;
+}
+
+.sidebar-content {
+    padding: 1.5rem 1rem;
+}
+
+/* Панель авторизованного пользователя */
+.user-panel {
+    text-align: center;
+}
+
+.user-panel .avatar {
+    width: 80px;
+    height: 80px;
+    background: var(--header-bg);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 1rem auto;
+}
+
+.user-panel h3 {
+    margin: 0 0 0.3rem 0;
+    color: var(--text);
+}
+
+.user-panel .status {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+}
+
+.user-panel .stats {
+    text-align: left;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.user-panel .stats p {
+    margin: 0.6rem 0;
+}
+
+.user-panel nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.user-panel nav li {
+    margin-bottom: 0.8rem;
+}
+
+.user-panel nav a {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.user-panel nav a:hover {
+    background-color: var(--hover-bg);
+    color: var(--link-color);
+}
+
+/* Панель неавторизованного пользователя */
+.auth-panel {
+    text-align: center;
+}
+
+.auth-panel h3 {
+    margin: 0 0 0.8rem 0;
+    color: var(--text);
+}
+
+.auth-panel p {
+    color: var(--text);
+    opacity: 0.8;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-login, .btn-register {
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-login {
+    background-color: var(--header-bg);
+    color: white;
+}
+
+.btn-register {
+    background-color: transparent;
+    color: var(--header-bg);
+    border: 1px solid var(--header-bg);
+}
+
+.btn-login:hover {
+    background-color: #0056b3;
+}
+
+.btn-register:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 991px) {
+    .sidebar {
+        display: none; /* Скрываем на маленьких экранах */
+    }
+}
+/* Глобальные шрифты */
+:root {
+    --font-main: 'Inter', sans-serif;
+    --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+/* Базовый стиль для всего документа */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    /* Плавность для анимированных шрифтов */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Заголовки */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text);
+}
+
+/* Основной текст */
+p, li, span {
+    font-weight: 400;
+}
+
+/* Кнопки и интерактивные элементы */
+button, .btn-login, .btn-register, .dropdown-menu a {
+    font-family: var(--font-main);
+    font-weight: 500; /* Medium */
+    letter-spacing: 0.3px;
+}
+
+/* Моноширинный текст (если нужен) */
+code, pre {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+}
+/* Общий стиль формы */
+.auth-form {
+    /* Эффект матового стекла (чистый CSS) */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Для Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+}
+
+/* Применяем стиль к нужным элементам */
+.user-panel,
+.auth-panel,
+.auth-form {
+    /* Копируем все свойства из .glass-effect */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 20px; /* Для .auth-form — чуть больше скругление */
+}
+    padding: 2rem 1.5rem;
+    border-radius: 20px; /* Закруглённые края */
+    max-width: 360px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.4s ease;
+}
+
+.auth-form.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Заголовок формы */
+.form-title {
+    color: white;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Группы полей */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    font-family: var(--font-main);
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.3);
+}
+
+/* Кнопка отправки */
+.btn-submit {
+    width: 100%;
+    padding: 0.9rem 0;
+    background-color: var(--header-bg);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: var(--font-main);
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 0.5rem;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+/* Ссылка для переключения */
+.switch-link {
+    text-align: center;
+    margin-top: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.switch-link a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.switch-link a:hover {
+    color: #80d8ff;
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-form.animated {
+    animation: fadeInUp 0.6s ease forwards;
+}
